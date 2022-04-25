@@ -10,13 +10,16 @@ async def poll(msg: types.Message):
     json1 = question
     quest = json1['question']
     options = json1['answer']
-    correct = json1['explanation']-1
+    correct = json1['explanation'] - 1
+    message = await msg.answer_poll(question=quest,
+                                    options=options,
+                                    type='quiz',
+                                    correct_option_id=correct,
+                                    explanation=f'To\'g\'ri javob: {options[correct]}'
+                                    )
 
-    message = await bot.send_poll(chat_id=ADMINS[0],
-                                  question=quest,
-                                  options=options,
-                                  type='quiz',
-                                  correct_option_id=correct,
-                                  explanation=f'To\'g\'ri javob: {options[correct]}')
 
-    # pprint(message)
+@dp.poll_answer_handler()
+async def some_poll_answer_handler(poll_answer: types.PollAnswer):
+
+    print(poll_answer['poll_id'])
