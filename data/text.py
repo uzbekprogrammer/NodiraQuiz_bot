@@ -1,6 +1,6 @@
 question = {
-    'ques1': ['', False],
-    'ques2': ['', False],
-    'ques3': ['', False],
-    'ques4': ['', False]
+    'question': 'Test question',
+    'answer': ['Test Answer1', 'Test Answer2', 'Test Answer3', 'Test Answer4'],
+    'explanation': 1,
+    'done': False
 }

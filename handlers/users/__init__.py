@@ -1,3 +1,4 @@
+from . import admin
 from . import main
 from . import help
 from . import start
