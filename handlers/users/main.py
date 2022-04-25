@@ -20,6 +20,6 @@ async def poll(msg: types.Message):
 
 
 @dp.poll_answer_handler()
-async def some_poll_answer_handler(poll_answer: types.PollAnswer):
+async def some_poll_answer_handler(poll_answer: types.Poll):
 
     print(poll_answer['poll_id'])
