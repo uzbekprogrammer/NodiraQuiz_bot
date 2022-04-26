@@ -43,4 +43,18 @@ async def tartibi(msg: types.Message, state: FSMContext):
         'explanation': int(message)
     })
     await msg.answer('Bajarildi')
+    json1 = question
+    quest = json1['question']
+    options = json1['answer']
+    correct = json1['explanation'] - 1
+    target_channel = ['@opencv_uzb']
+    for i in target_channel:
+        message = await bot.send_poll(chat_id=i,
+                                        question=quest,
+                                        options=options,
+                                        type='quiz',
+                                        correct_option_id=correct,
+                                        explanation=f'To\'g\'ri javob: {options[correct]}'
+                                        )
+
     await state.finish()

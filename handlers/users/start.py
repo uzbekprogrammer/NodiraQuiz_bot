@@ -33,3 +33,10 @@ async def checker(call: types.CallbackQuery):
                        f"<a href='{invite_link}'>Obuna bo'ling</a>\n\n")
 
     await call.message.answer(result, disable_web_page_preview=True)
+
+
+@dp.message_handler(text="Bekor qilish", state="*")
+async def bot_start(message: types.Message, state: FSMContext):
+    if state:
+        await state.finish()
+    await message.answer('Bekor qilindi')
