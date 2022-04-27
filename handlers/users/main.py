@@ -5,6 +5,7 @@ from data.text import question
 from loader import dp, bot
 
 
+@dp.message_handler(text='📝Test bajarish')
 @dp.message_handler(commands="quiz")
 async def poll(msg: types.Message):
     json1 = question

@@ -4,6 +4,7 @@ from aiogram.dispatcher.filters.builtin import CommandStart
 from aiogram.types import ReplyKeyboardRemove
 
 from data.config import CHANNELS
+from keyboards.default.Quiz import main
 from loader import dp, bot
 from utils.misc import subscriotion
 
@@ -14,7 +15,7 @@ async def bot_start(message: types.Message, state: FSMContext):
         await state.finish()
     await message.answer(f"Assalomu aleykum, {message.from_user.full_name}!\n"
                          f"Nodirabegim nomidagi Namangan viloyati axborot-kutubxona markazi rasmiy botiga xush kelibsiz. ",
-                         reply_markup=ReplyKeyboardRemove())
+                         reply_markup=main)
 
 
 @dp.callback_query_handler(text="check_subs")
@@ -35,8 +36,8 @@ async def checker(call: types.CallbackQuery):
     await call.message.answer(result, disable_web_page_preview=True)
 
 
-@dp.message_handler(text="Bekor qilish", state="*")
+@dp.message_handler(text="Bekor qilish❌", state="*")
 async def bot_start(message: types.Message, state: FSMContext):
     if state:
         await state.finish()
-    await message.answer('Bekor qilindi')
+    await message.answer('Bekor qilindi✅', reply_markup=main)
